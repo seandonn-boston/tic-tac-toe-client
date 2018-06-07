@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Sean's Tic Tac Toe Game</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,9 +12,80 @@
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
-    <body>
-      <h1>Initial branch: development</h1>
 
-      <div id="gameBoard"></div>
+    <body class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1>Initial branch: development</h1>
+        </div>
+      </div>
+
+      <!-- Big row of login forms -->
+      <div class="row">
+        <!-- Sign up -->
+        <div class="col-xs-12"> <!-- depending on display functionality, all user-auth forms might be in this div.col or they might require their own col. Keep an eye on this during visibility testing, but for now they will be seperated out into multiple div.col -->
+          <h3>Sign Up</h3>
+          <form id="signUpForm">
+            <div class="form-group">
+              <!-- Sign Up Email Input -->
+              <label for="signUpEmailInput">Email address</label>
+              <input type="email" class="form-control" id="signUpEmailInput" name="credentials[email]" placeholder="Email">
+              <!-- Sign Up Password Input -->
+              <label for="signUpPassword">Password</label>
+              <input type="password" class="form-control" id="signUpPassword" name="credentials[password]" placeholder="Password">
+              <!-- Sign Up Confirm Password Input -->
+              <label for="signUpPasswordConfirm">Confirm Password</label>
+              <input type="password" class="form-control" id="signUpPasswordConfirm" name="credentials[password_confirmation]" placeholder="Confirm Password">
+              <!-- Sign Up Submit -->
+              <button type="submit">Sign Up</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Sign In -->
+        <div class="col-xs-12">
+          <h3>Sign In</h3>
+          <form id="signInForm">
+            <div class="form-group">
+              <!-- Sign In Email Input -->
+              <label for="signInEmailInput">Email address</label>
+              <input type="email" class="form-control" id="signInEmailInput" name="credentials[email]" placeholder="Email">
+              <!-- Sign In Password Input -->
+              <label for="signInPassword">Password</label>
+              <input type="password" class="form-control" id="signInPassword" name="credentials[password]" placeholder="Password">
+              <!-- Sign In Submit -->
+              <button type="submit">Sign In</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Change Password -->
+        <div class="col-xs-12">
+          <h3>Change Password</h3>
+          <form id="changePasswordForm">
+            <div class="form-group">
+              <!-- Change Password Old Input -->
+              <label for="changePasswordOld">Old Password</label>
+              <input type="password" class="form-control" id="changePasswordOld" name="passwords[old]" placeholder="Old Password">
+              <!-- Change Password New Input -->
+              <label for="changePasswordNew">New Password</label>
+              <input type="password" class="form-control" id="changePasswordNew" name="password[new]" placeholder="New Password">
+              <!-- Change Password Submit -->
+              <button type="submit">Change Password</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Sign Out -->
+        <div class="col-xs-12">
+          <h3>Sign Out</h3>
+          <form id="signOutForm">
+            <div class="form-group">
+              <button id="signOutButton" type="submit">Sign Out</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
     </body>
 </html>
