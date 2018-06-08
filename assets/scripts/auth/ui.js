@@ -31,14 +31,32 @@ const signInError = function (error) {
 // Change Password success message is displaying properly
 const changePasswordSuccess = function () {
   $(`#changePasswordEmptyDiv`).html(``)
-  const changePasswordSuccessHTML = (`<p>You've changed your password!</p>`)
-  $(`#changePasswordEmptyDiv`).append(changePasswordSuccessHTML)
+  const message = (`<p>You successfully changed your password.</p>`)
+  $(`#changePasswordEmptyDiv`).append(message)
 }
 // Change Password error message is displaying properly
-const changePasswordError = function () {
+const changePasswordError = function (error) {
+  console.log(`Error in changePassword is `, error)
   $(`#changePasswordEmptyDiv`).html(``)
-  const changePasswordErrorHTML = (`<p>You were unable to change your password!</p>`)
-  $(`#changePasswordEmptyDiv`).append(changePasswordErrorHTML)
+  const message = (`<p>You were unable to change your password. Double check your inputs.</p>`)
+  $(`#changePasswordEmptyDiv`).append(message)
+}
+
+// Organizational gap
+
+// Sign Out success message is working but needs and html display still
+const signOutSuccess = function () {
+  $(`#signOutEmptyDiv`).html(``)
+  const message = (`<p>You successfully signed out.</p>`)
+  $(`#signOutEmptyDiv`).append(message)
+  delete store.user
+}
+// Sign Out error message is working but needs and html display still
+const signOutError = function (error) {
+  console.log(`Error in sign out is `, error)
+  $(`#signOutEmptyDiv`).html(``)
+  const message = (`<p>You successfully signed out.</p>`)
+  $(`#signOutEmptyDiv`).append(message)
 }
 
 // Organizational gap
@@ -49,5 +67,7 @@ module.exports = {
   signInSuccess,
   signInError,
   changePasswordSuccess,
-  changePasswordError
+  changePasswordError,
+  signOutSuccess,
+  signOutError
 }

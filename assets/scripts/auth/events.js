@@ -37,8 +37,17 @@ const onChangePassword = function (event) {
   console.log(`this is the data of onChangePassword:`, data)
 }
 
+// Change Sign Out is operating properly
+const onSignOut = function (event) {
+  event.preventDefault()
+  authApi.signOut()
+    .then(authUi.signOutSuccess)
+    .catch(authUi.signOutError)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
-  onChangePassword
+  onChangePassword,
+  onSignOut
 }

@@ -21,14 +21,25 @@ const signIn = function (data) {
   })
 }
 
-// Change Paswword is NOT NOT NOT operating properly
+// Change Password is operating properly
 const changePassword = function (data) {
   console.log(`store is `, store)
   console.log(`token is `, store.user.token)
   return $.ajax({
     method: `PATCH`,
-    url: `https://tic-tac-toe-wdi.herokuapp.com/change-password`,
+    url: config.apiUrl + `/change-password`,
     data: data,
+    headers: {
+      Authorization: `Token token=` + store.user.token
+    }
+  })
+}
+
+// sign Out is operating properly
+const signOut = function () {
+  return $.ajax({
+    method: `DELETE`,
+    url: config.apiUrl + `/sign-out`,
     headers: {
       Authorization: `Token token=` + store.user.token
     }
@@ -38,5 +49,6 @@ const changePassword = function (data) {
 module.exports = {
   signUp,
   signIn,
-  changePassword
+  changePassword,
+  signOut
 }
