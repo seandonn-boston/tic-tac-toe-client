@@ -8,24 +8,34 @@ const store = require(`../store`)
 
 // Sign Up success message is working but needs and html display still
 const signUpSuccess = function (response) {
-  console.log(`response is `, response)
+  $(`#signUpEmptyDiv`).html(``)
+  const message = (`<p>Welcome new user and thank you for joining!</p>`)
+  $(`#signUpEmptyDiv`).append(message)
 }
 // Sign Up error message is working but needs and html display still
 const signUpError = function (error) {
   console.log(`Error in sign up is `, error)
+  $(`#signUpEmptyDiv`).html(``)
+  const message = (`<p>ERROR: We were unable to sign you up at this time. It is possible that your email has already been registered, please try again with a different email.</p>`)
+  $(`#signUpEmptyDiv`).append(message)
 }
 
 // Organizational gap
 
 // Sign In success message is working but needs and html display still
 const signInSuccess = function (response) {
-  console.log(`response is `, response)
+  $(`#signInEmptyDiv`).html(``)
   store.user = response.user
   console.log(`store is `, store)
+  const message = (`<p>Welcome back!</p>`)
+  $(`#signInEmptyDiv`).append(message)
 }
 // Sign In error message is working but needs and html display still
 const signInError = function (error) {
   console.log(`Error in sign in is `, error)
+  $(`#signInEmptyDiv`).html(``)
+  const message = (`<p>ERROR: We are unable to sign you in at this time. Please review your login credentials and try again.</p>`)
+  $(`#signInEmptyDiv`).append(message)
 }
 
 // Organizational gap
