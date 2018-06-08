@@ -15,6 +15,18 @@ const onSignUp = function (event) {
   console.log(`data is `, data)
 }
 
+const onSignIn = function (event) {
+  event.preventDefault()
+  console.log(`This is onSignIn`)
+
+  const data = getFormFields(event.target)
+  authApi.signIn(data)
+    .then(authUi.signInSuccess)
+    .catch(authUi.signInError)
+  console.log(`data is `, data)
+}
+
 module.exports = {
-  onSignUp
+  onSignUp,
+  onSignIn
 }
