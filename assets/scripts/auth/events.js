@@ -4,10 +4,10 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 const authApi = require(`./api`)
 const authUi = require(`./ui`)
 
+// Sign Up is operating properly
 const onSignUp = function (event) {
   event.preventDefault()
-  console.log(`This is onSignUp`)
-
+  console.log(`This is onSignUp. This is working`)
   const data = getFormFields(event.target)
   authApi.signUp(data)
     .then(authUi.signUpSuccess)
@@ -15,6 +15,7 @@ const onSignUp = function (event) {
   console.log(`data is `, data)
 }
 
+// Sign In is operating properly
 const onSignIn = function (event) {
   event.preventDefault()
   console.log(`This is onSignIn`)
@@ -26,7 +27,18 @@ const onSignIn = function (event) {
   console.log(`data is `, data)
 }
 
+// Change Password is operating properly
+const onChangePassword = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  authApi.changePassword(data)
+    .then(authUi.changePasswordSuccess)
+    .catch(authUi.changePasswordError)
+  console.log(`this is the data of onChangePassword:`, data)
+}
+
 module.exports = {
   onSignUp,
-  onSignIn
+  onSignIn,
+  onChangePassword
 }
