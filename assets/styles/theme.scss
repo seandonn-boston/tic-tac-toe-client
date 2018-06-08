@@ -1,0 +1,62 @@
+// HEY SEAN!!! Sean, you may edit this file. Don't edit files that don't have this comment at the top. Delete this comment before deliverables are due
+
+// Game Board Styles
+.gb-section {
+  background-color: $primary-color;
+
+  & .gb-col {
+    background-color: $secondary-color;
+
+    & .gb-wrapper {
+      background-color: $tertiary-color;
+    }
+  }
+}
+
+.left-box,
+.mid-box,
+.right-box {
+  float: left;
+}
+
+.top-row {
+  & .left-box {
+    background-color: $quaternary-color;
+  }
+
+  & .mid-box {
+    background-color: $quinary-color;
+  }
+
+  & .right-box {
+    background-color: $senary-color;
+  }
+}
+
+.middle-row {
+  & .left-box {
+    background-color: $senary-color;
+  }
+
+  & .mid-box {
+    background-color: $quaternary-color;
+  }
+
+  & .right-box {
+    background-color: $quinary-color;
+  }
+}
+
+.bottom-row {
+  & .left-box {
+    background-color: $quinary-color;
+  }
+
+  & .mid-box {
+    background-color: $senary-color;
+  }
+
+  & .right-box {
+    background-color: $quaternary-color;
+  }
+}

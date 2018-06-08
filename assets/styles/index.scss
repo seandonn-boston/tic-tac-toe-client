@@ -2,15 +2,8 @@
 
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import 'colors';
 
-.gb-section {
-  background-color: #00f;
-}
 
-.gb-col {
-  background-color: #f00;
-}
-
-.gb-wrapper {
-  background-color: #0f0;
-}
+// Order matters, for correct referencing. Theme must stay on bottom
+@import 'theme';
