@@ -1,7 +1,7 @@
 // HEY SEAN!!! Sean, you may edit this file. Don't edit files that don't have this comment at the top. Delete this comment before deliverables are due
 const winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
-const userEX = {arrayOfSpaces: []}
-const userOH = {arrayOfSpaces: []}
+const arrEX = []
+const arrOH = []
 let currentUserValue = `EX`
 let totalTurns = 0
 const onPlay = function () {
@@ -19,7 +19,13 @@ const onPlay = function () {
     const symbol = currentUserValue
     $(`#moveSpace` + currentSpaceValue).append(symbol)
     console.log(symbol, `has been played!`)
-    // ADD THE currentSpaceValue TO THE arrayOfSpaces ACCORDING TO WHICH USER PLAYED THIS TURN
+
+    // ADD THE currentSpaceValue TO arrEX OR arrOH ACCORDING TO WHICH USER PLAYED THIS TURN
+    if (currentUserValue === `EX`) {
+      arrEX.push(currentSpaceValue)
+    } else if (currentUserValue === `OH`) {
+      arrOH.push(currentSpaceValue)
+    }
 
     // Nested turn rotation, so not to accidentally skip turns if
     if (currentUserValue === `EX`) {
@@ -39,8 +45,10 @@ const onPlay = function () {
     } else if (totalTurns >= 5) {
       console.log(`We need to check for a winner`)
       for (let i = 0; i < winningCombos.length; i++) {
-        if (userEX.arrayOfSpaces === winningCombos[i]) {
-          console.log(`We got a winner`)
+        if (arrEX === winningCombos[i]) {
+          console.log(`EX Wins`)
+        } else if (arrOH === winningCombos[i]) {
+          console.log(`OH Wins`)
         }
       }
     }
@@ -50,8 +58,8 @@ const onPlay = function () {
       console.log(`We need to check for a tie, which means we need to check for a winner first. If there was a winner, there is no tie, if there was no winner, there is a tie.`)
     }
   }
-  console.log(userEX)
-  console.log(userOH)
+  console.log(arrEX)
+  console.log(arrOH)
 }
 
 module.exports = {
