@@ -5,14 +5,30 @@
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
 const authEvents = require(`./auth/events`)
+const gameEngine = require(`./game-engine/events`)
 
 // use require without a reference to ensure a file is bundled
 // require('./example')
 
+// User Authentication event listeners
 $(() => {
   // $(`#someIDofTheThing`).on(`action`, function (event) {event.preventDefault()})
   $(`#signUpForm`).on(`submit`, authEvents.onSignUp)
   $(`#signInForm`).on(`submit`, authEvents.onSignIn)
   $(`#changePasswordForm`).on(`submit`, authEvents.onChangePassword)
   $(`#signOutForm`).on(`submit`, authEvents.onSignOut)
+})
+
+// Game Engine listeners
+$(() => {
+  // $(`#someIDofTheThing`).on(`action`, function (event) {event.preventDefault()})
+  $(`#box0`).on(`click`, gameEngine.onPlay) // top left
+  $(`#box1`).on(`click`, gameEngine.onPlay) // top mid
+  $(`#box2`).on(`click`, gameEngine.onPlay) // top right
+  $(`#box3`).on(`click`, gameEngine.onPlay) // middle left
+  $(`#box4`).on(`click`, gameEngine.onPlay) // middle mid
+  $(`#box5`).on(`click`, gameEngine.onPlay) // middle right
+  $(`#box6`).on(`click`, gameEngine.onPlay) // bottom left
+  $(`#box7`).on(`click`, gameEngine.onPlay) // bottom mid
+  $(`#box8`).on(`click`, gameEngine.onPlay) // bottom right
 })
