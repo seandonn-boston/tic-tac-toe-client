@@ -6,11 +6,11 @@ let currentUserValue = `EX`
 let totalTurns = 0
 const onPlay = function () {
   // Get currentSpaceValue as a single number by retrieving the space ID and "boiling it down" to the unique number at the end of the ID
-  const currentSpaceValue = event.target.id.replace(`moveSpace`, ``)
-  console.log(`The currentSpaceValue is `, currentSpaceValue)
+  const currentSpaceValue = Number(event.target.id.replace(`moveSpace`, ``))
+  // console.log(`The currentSpaceValue is `, typeof currentSpaceValue)
 
   // Check if the clicked space already contains an EX or OH. If the space does contain an EX or OH, tell the user it cannot be played. If the space does not contain EX or OH, play the users symbol in that selected space
-  console.log(`The currentUserValue is `, currentUserValue)
+  // console.log(`The currentUserValue is `, currentUserValue)
   const data = $(event.target).html()
   if (data === `EX` || data === `OH`) {
     console.log(`User cannot play in this space!`)
@@ -27,29 +27,19 @@ const onPlay = function () {
       arrOH.push(currentSpaceValue)
     }
 
-    // Nested turn rotation, so not to accidentally skip turns if
-    if (currentUserValue === `EX`) {
-      currentUserValue = `OH`
-    } else if (currentUserValue === 'OH') {
-      currentUserValue = `EX`
-    }
-    console.log(`The symbol of next turn will be`, currentUserValue)
-
     // Nested totalTurn reevaluation
     totalTurns = totalTurns + 1
-    console.log(`The totalTurns is `, totalTurns)
 
     // Nested winner check
     if (totalTurns < 5) {
       console.log(`We need to keep playing, there won't be a winner yet`)
     } else if (totalTurns >= 5) {
-      console.log(`We need to check for a winner`)
+      console.log(`Time to check for a winner`)
       for (let i = 0; i < winningCombos.length; i++) {
-        if (arrEX === winningCombos[i]) {
-          console.log(`EX Wins`)
-        } else if (arrOH === winningCombos[i]) {
-          console.log(`OH Wins`)
-        }
+        console.log(`inside the double for loop, AAA`, winningCombos[i])
+        winningCombos[i].every(
+          // winningCombos[i] gives each inidividual array found in the winningCombos array. Take arrEX and check if arrEX has every number in winningCombos[i]. If arrEX does contain every number from winningCombos[i], then user X has won the game. If arrEX does not contain every number from winningCombos[i], then the for loop will move onto the next iteration of winningCombos[i]. If arrEX does not contain any winningCombos arrays, then recheck all combos again against arrOH. if arrOH has all three numbers of any given winningCombo[i], then user O has won the game. If arrOH has no winningCombos, then user X and user O have not won the game. BEFORE CONTINUEING TO PLAY, if totalTurns === 9, then the game is a tie! otherwise, neither player X nor O has won, nor is it a tie, therefore continue playing the game and exit all the loops
+        )
       }
     }
 
@@ -57,9 +47,18 @@ const onPlay = function () {
     if (totalTurns === 9) {
       console.log(`We need to check for a tie, which means we need to check for a winner first. If there was a winner, there is no tie, if there was no winner, there is a tie.`)
     }
+
+    // Nested turn rotation, so not to accidentally skip turns if
+    if (currentUserValue === `EX`) {
+      currentUserValue = `OH`
+    } else if (currentUserValue === 'OH') {
+      currentUserValue = `EX`
+    }
+    console.log(`The symbol of next turn will be`, currentUserValue)
   }
-  console.log(arrEX)
-  console.log(arrOH)
+  console.log(`arrEX is`, arrEX)
+  console.log(`arrOH is`, arrOH)
+  console.log(winningCombos)
 }
 
 module.exports = {
