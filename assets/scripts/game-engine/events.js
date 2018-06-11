@@ -5,6 +5,7 @@ let arrOH = []
 let winner
 let currentUserValue = `EX`
 let totalTurns = 0
+let gameOn = true
 
 const onPlay = function () {
   // Get currentSpaceValue as a single number by retrieving the space ID and "boiling it down" to the unique number at the end of the ID
@@ -14,12 +15,16 @@ const onPlay = function () {
   // console.log(`The currentUserValue is `, currentUserValue)
   const data = $(event.target).html()
   if (data === `EX` || data === `OH`) {
-    console.log(`User cannot play in this space!`)
-  } else {
+    $(`#emptyMessage`).html(``)
+    const invalidTurn = (`<p>Sorry, this space is already taken, please choose another</p>`)
+    $(`#emptyMessage`).append(invalidTurn)
+  } else if (gameOn === true) {
+    $(`#emptyMessage`).html(``)
     $(`#moveSpace` + currentSpaceValue).html(``)
     const symbol = currentUserValue
     $(`#moveSpace` + currentSpaceValue).append(symbol)
-    console.log(symbol, `has been played!`)
+    const validTurn = (`<p>${symbol} has been played!</p>`)
+    $(`#emptyMessage`).append(validTurn)
 
     // ADD THE currentSpaceValue TO arrEX OR arrOH ACCORDING TO WHICH USER PLAYED THIS TURN
     if (currentUserValue === `EX`) {
@@ -32,31 +37,35 @@ const onPlay = function () {
     totalTurns = totalTurns + 1
 
     // Nested winner check
-    if (totalTurns < 5) {
-      console.log(`We need to keep playing, there won't be a winner yet`)
-    } else if (totalTurns >= 5) {
-      console.log(`Time to check for a winner`)
+    if (totalTurns >= 5) {
       for (let i = 0; i < winningCombos.length; i++) {
         const currentCombo = winningCombos[i]
         const a = currentCombo[0]
         const b = currentCombo[1]
         const c = currentCombo[2]
         if (arrEX.includes(a) === true && arrEX.includes(b) === true && arrEX.includes(c) === true) {
-          console.log(`EX wins`)
+          $(`#emptyMessage`).html(``)
+          const winningMessage = (`<p>EX wins!</p>`)
+          $(`#emptyMessage`).append(winningMessage)
           winner = `EX`
-          onReset()
+          gameOn = false
+          // onReset()
         } else if (arrOH.includes(a) === true && arrOH.includes(b) === true && arrOH.includes(c) === true) {
-          console.log(`OH wins`)
+          $(`#emptyMessage`).html(``)
+          const winningMessage = (`<p>OH wins!</p>`)
+          $(`#emptyMessage`).append(winningMessage)
           winner = `OH`
-          onReset()
+          gameOn = false
+          // onReset()
         }
       }
-      console.log(`winner is`, winner)
     }
 
     // Nested tie check (to be combined with winner check)
     if (totalTurns === 9 && winner === undefined) {
-      console.log(`There is a tie!`)
+      $(`#emptyMessage`).html(``)
+      const tieMessage = (`<p>This game resulted in a tie!</p>`)
+      $(`#emptyMessage`).append(tieMessage)
     }
 
     // Nested turn rotation, so not to accidentally skip turns if
@@ -65,11 +74,7 @@ const onPlay = function () {
     } else if (currentUserValue === 'OH') {
       currentUserValue = `EX`
     }
-    console.log(`The symbol of next turn will be`, currentUserValue)
   }
-  console.log(`arrEX is`, arrEX)
-  console.log(`arrOH is`, arrOH)
-  console.log(winningCombos)
 }
 
 const onReset = function () {
@@ -78,6 +83,7 @@ const onReset = function () {
   winner = undefined
   currentUserValue = `EX`
   totalTurns = 0
+  gameOn = true
   $(`#moveSpace0`).html(``)
   $(`#moveSpace1`).html(``)
   $(`#moveSpace2`).html(``)
@@ -87,6 +93,7 @@ const onReset = function () {
   $(`#moveSpace6`).html(``)
   $(`#moveSpace7`).html(``)
   $(`#moveSpace8`).html(``)
+  $(`#emptyMessage`).html(``)
 }
 
 module.exports = {
