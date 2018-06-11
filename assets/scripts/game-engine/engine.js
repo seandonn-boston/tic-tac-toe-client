@@ -2,6 +2,7 @@
 const winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
 let arrEX = []
 let arrOH = []
+let currentGameArr = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 let winner
 let currentUserValue = `EX`
 let userOnDeck = `OH`
@@ -15,7 +16,7 @@ const onPlay = function () {
   // Check if the clicked space already contains an EX or OH. If the space does contain an EX or OH, tell the user it cannot be played. If the space does not contain EX or OH, play the users symbol in that selected space
   // console.log(`The currentUserValue is `, currentUserValue)
   const data = $(event.target).html()
-  if (data === `EX` || data === `OH`) {
+  if ((data === `EX` || data === `OH`) && gameOn === true) {
     $(`#emptyMessage`).html(``)
     const invalidTurn = (`<p>Sorry, this space is already taken, please choose another</p>`)
     $(`#emptyMessage`).append(invalidTurn)
@@ -33,6 +34,10 @@ const onPlay = function () {
     } else if (currentUserValue === `OH`) {
       arrOH.push(currentSpaceValue)
     }
+
+    // ADD THE currentUserValue TO currentGameArr[currentSpaceValue]
+    currentGameArr[currentSpaceValue] = currentUserValue
+    console.log(currentGameArr)
 
     // Nested totalTurn reevaluation
     totalTurns = totalTurns + 1
@@ -81,6 +86,7 @@ const onPlay = function () {
 const onReset = function () {
   arrEX = []
   arrOH = []
+  currentGameArr = [0, 1, 2, 3, 4, 5, 6, 7, 8]
   winner = undefined
   currentUserValue = `EX`
   totalTurns = 0
