@@ -49,14 +49,12 @@ const onPlay = function () {
           $(`#emptyMessage`).append(winningMessage)
           winner = `EX`
           gameOn = false
-          // onReset()
         } else if (arrOH.includes(a) === true && arrOH.includes(b) === true && arrOH.includes(c) === true) {
           $(`#emptyMessage`).html(``)
           const winningMessage = (`<p>OH wins!</p>`)
           $(`#emptyMessage`).append(winningMessage)
           winner = `OH`
           gameOn = false
-          // onReset()
         }
       }
     }

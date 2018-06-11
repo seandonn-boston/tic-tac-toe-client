@@ -21,6 +21,10 @@
 .mid-box,
 .right-box {
   float: left;
+
+  & p {
+    height: 100px;
+  }
 }
 
 .top-row {
