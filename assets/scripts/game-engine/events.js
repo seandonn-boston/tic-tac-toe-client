@@ -36,10 +36,20 @@ const onPlay = function () {
     } else if (totalTurns >= 5) {
       console.log(`Time to check for a winner`)
       for (let i = 0; i < winningCombos.length; i++) {
-        console.log(`inside the double for loop, AAA`, winningCombos[i])
-        winningCombos[i].every(
-          // winningCombos[i] gives each inidividual array found in the winningCombos array. Take arrEX and check if arrEX has every number in winningCombos[i]. If arrEX does contain every number from winningCombos[i], then user X has won the game. If arrEX does not contain every number from winningCombos[i], then the for loop will move onto the next iteration of winningCombos[i]. If arrEX does not contain any winningCombos arrays, then recheck all combos again against arrOH. if arrOH has all three numbers of any given winningCombo[i], then user O has won the game. If arrOH has no winningCombos, then user X and user O have not won the game. BEFORE CONTINUEING TO PLAY, if totalTurns === 9, then the game is a tie! otherwise, neither player X nor O has won, nor is it a tie, therefore continue playing the game and exit all the loops
-        )
+        const currentCombo = winningCombos[i]
+        const a = currentCombo[0]
+        const b = currentCombo[1]
+        const c = currentCombo[2]
+        let winner
+        if (arrEX.includes(a) === true && arrEX.includes(b) === true && arrEX.includes(c) === true) {
+          console.log(`EX wins`)
+          winner = `EX`
+        } else if (arrOH.includes(a) === true && arrOH.includes(b) === true && arrOH.includes(c) === true) {
+          console.log(`OH wins`)
+          winner = `OH`
+        } else if (totalTurns === 9 && winner !== `EX` && winner !== `OH`) {
+          console.log(`Tie game`)
+        }
       }
     }
 
