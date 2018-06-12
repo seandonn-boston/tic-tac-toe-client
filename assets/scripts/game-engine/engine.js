@@ -4,54 +4,58 @@
 
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
+const store = require(`../store`)
+
+store.gameOn = true
+store.currentUserValue = `x`
+let userOnDeck = `o`
+let totalTurns = 0
+const winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
+let currentGameArr = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+let arrx = []
+let arro = []
+let winner
+
 const gameEvents = require(`./game-api/events`)
 
-const winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
-let arrEX = []
-let arrOH = []
-let currentGameArr = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-let winner
-let currentUserValue = `EX`
-let userOnDeck = `OH`
-let totalTurns = 0
-let gameOn = true
-
 const onPlay = function () {
-  // Working
-  // gameEvents.onCreateGame()
-  // // Working
-  // gameEvents.onGetGames()
-  console.log(`a`)
-  gameEvents.onGetOneGame()
-  console.log(`g`)
-  // Get currentSpaceValue as a single number by retrieving the space ID and "boiling it down" to the unique number at the end of the ID
-  const currentSpaceValue = Number(event.target.id.replace(`moveSpace`, ``))
+  // Get store.currentSpaceValue as a single number by retrieving the space ID and "boiling it down" to the unique number at the end of the ID
+  store.currentSpaceValue = Number(event.target.id.replace(`moveSpace`, ``))
 
-  // Check if the clicked space already contains an EX or OH. If the space does contain an EX or OH, tell the user it cannot be played. If the space does not contain EX or OH, play the users symbol in that selected space
-  // console.log(`The currentUserValue is `, currentUserValue)
+  // Game API functions
+  if (totalTurns === 0) {
+    gameEvents.onCreateGame()
+  } else if (winner === undefined) {
+    gameEvents.onGetGames()
+    gameEvents.onGetOneGame()
+    gameEvents.onUpdateGame()
+  } else if (winner !== undefined) {
+    gameEvents.onUpdateGame()
+  }
+
+  // Check if the clicked space already contains an x or o. If the space does contain an x or o, tell the user it cannot be played. If the space does not contain x or o, play the users symbol in that selected space
   const data = $(event.target).html()
-  if ((data === `EX` || data === `OH`) && gameOn === true) {
+  if ((data === `x` || data === `o`) && store.gameOn === true) {
     $(`#emptyMessage`).html(``)
     const invalidTurn = (`<p>Sorry, this space is already taken, please choose another</p>`)
     $(`#emptyMessage`).append(invalidTurn)
-  } else if (gameOn === true) {
+  } else if (store.gameOn === true) {
     $(`#emptyMessage`).html(``)
-    $(`#moveSpace` + currentSpaceValue).html(``)
-    const symbol = currentUserValue
-    $(`#moveSpace` + currentSpaceValue).append(symbol)
+    $(`#moveSpace` + store.currentSpaceValue).html(``)
+    const symbol = store.currentUserValue
+    $(`#moveSpace` + store.currentSpaceValue).append(symbol)
     const validTurn = (`<p>An ${symbol} has been played! Next up: ${userOnDeck}</p>`)
     $(`#emptyMessage`).append(validTurn)
 
-    // ADD THE currentSpaceValue TO arrEX OR arrOH ACCORDING TO WHICH USER PLAYED THIS TURN
-    if (currentUserValue === `EX`) {
-      arrEX.push(currentSpaceValue)
-    } else if (currentUserValue === `OH`) {
-      arrOH.push(currentSpaceValue)
+    // ADD THE store.currentSpaceValue TO arrx OR arro ACCORDING TO WHICH USER PLAYED THIS TURN
+    if (store.currentUserValue === `x`) {
+      arrx.push(store.currentSpaceValue)
+    } else if (store.currentUserValue === `o`) {
+      arro.push(store.currentSpaceValue)
     }
 
-    // ADD THE currentUserValue TO currentGameArr[currentSpaceValue]
-    currentGameArr[currentSpaceValue] = currentUserValue
-    console.log(currentGameArr)
+    // ADD THE store.currentUserValue TO currentGameArr[store.currentSpaceValue]
+    currentGameArr[store.currentSpaceValue] = store.currentUserValue
 
     // Nested totalTurn reevaluation
     totalTurns = totalTurns + 1
@@ -63,17 +67,17 @@ const onPlay = function () {
         const a = currentCombo[0]
         const b = currentCombo[1]
         const c = currentCombo[2]
-        if (arrEX.includes(a) === true && arrEX.includes(b) === true && arrEX.includes(c) === true) {
-          gameOn = false
-          winner = `EX`
+        if (arrx.includes(a) === true && arrx.includes(b) === true && arrx.includes(c) === true) {
+          store.gameOn = false
+          winner = `x`
           $(`#emptyMessage`).html(``)
-          const winningMessage = (`<p>EX wins!</p>`)
+          const winningMessage = (`<p>x wins!</p>`)
           $(`#emptyMessage`).append(winningMessage)
-        } else if (arrOH.includes(a) === true && arrOH.includes(b) === true && arrOH.includes(c) === true) {
-          gameOn = false
-          winner = `OH`
+        } else if (arro.includes(a) === true && arro.includes(b) === true && arro.includes(c) === true) {
+          store.gameOn = false
+          winner = `o`
           $(`#emptyMessage`).html(``)
-          const winningMessage = (`<p>OH wins!</p>`)
+          const winningMessage = (`<p>o wins!</p>`)
           $(`#emptyMessage`).append(winningMessage)
         }
       }
@@ -87,25 +91,24 @@ const onPlay = function () {
     }
 
     // Nested turn rotation, so not to accidentally skip turns if
-    if (currentUserValue === `EX`) {
-      currentUserValue = `OH`
-      userOnDeck = `EX`
-    } else if (currentUserValue === 'OH') {
-      currentUserValue = `EX`
-      userOnDeck = `OH`
+    if (store.currentUserValue === `x`) {
+      store.currentUserValue = `o`
+      userOnDeck = `x`
+    } else if (store.currentUserValue === 'o') {
+      store.currentUserValue = `x`
+      userOnDeck = `o`
     }
   }
 }
 
 const onReset = function () {
-  arrEX = []
-  arrOH = []
+  arrx = []
+  arro = []
   currentGameArr = [0, 1, 2, 3, 4, 5, 6, 7, 8]
   winner = undefined
-  currentUserValue = `EX`
+  store.currentUserValue = `x`
   totalTurns = 0
-  gameOn = true
-  // Note to self: this can be reduced. Consider a for loop and retrieve $(`#moveSpace[i]`)
+  store.gameOn = true
   $(`#moveSpace0`).html(``)
   $(`#moveSpace1`).html(``)
   $(`#moveSpace2`).html(``)

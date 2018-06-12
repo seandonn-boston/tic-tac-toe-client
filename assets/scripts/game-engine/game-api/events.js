@@ -5,21 +5,38 @@
 const gameApi = require(`./api`)
 const gameUi = require(`./ui`)
 
-// Working
+// Create Game
 const onCreateGame = function (event) {
   gameApi.createGame()
     .then(gameUi.createGameSuccess)
+    .then(onUpdateGame)
     .catch(gameUi.createGameError)
 }
 
-// Working
+// Get Games
 const onGetGames = function (event) {
   gameApi.getGames()
     .then(gameUi.getGamesSuccess)
     .catch(gameUi.getGamesError)
 }
 
+// Get One Game
+const onGetOneGame = function (event) {
+  gameApi.getOneGame()
+    .then(gameUi.getOneGameSuccess)
+    .catch(gameUi.getOneGameError)
+}
+
+// Update Game
+const onUpdateGame = function (event) {
+  gameApi.updateGame()
+    .then(gameUi.updateGameSuccess)
+    .catch(gameUi.updateGameError)
+}
+
 module.exports = {
   onCreateGame,
-  onGetGames
+  onGetGames,
+  onGetOneGame,
+  onUpdateGame
 }

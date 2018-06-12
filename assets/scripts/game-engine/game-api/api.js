@@ -5,10 +5,8 @@
 const config = require(`../../config`)
 const store = require(`../../store`)
 
-// Working
+// Create Game
 const createGame = function () {
-  console.log(`api store is `, store)
-  console.log(`api token is `, store.user.token)
   return $.ajax({
     method: `POST`,
     url: config.apiUrl + `/games`,
@@ -18,10 +16,8 @@ const createGame = function () {
   })
 }
 
-// Working
+// Get Games
 const getGames = function () {
-  console.log(`api store is `, store)
-  console.log(`api token is `, store.user.token)
   return $.ajax({
     method: `GET`,
     url: config.apiUrl + `/games`,
@@ -31,7 +27,43 @@ const getGames = function () {
   })
 }
 
+// Get One Game
+const getOneGame = function () {
+  return $.ajax({
+    method: `GET`,
+    url: config.apiUrl + `/games/` + store.game.id,
+    headers: {
+      Authorization: `Token token=` + store.user.token
+    }
+  })
+}
+
+// Update Game
+const updateGame = function () {
+  console.log(`currentSpaceValue is`, store.currentSpaceValue)
+  console.log(`currentUserValue is`, store.currentUserValue)
+  console.log(`over is`, !store.gameOn)
+  return $.ajax({
+    method: `PATCH`,
+    url: config.apiUrl + `/games/` + store.game.id,
+    headers: {
+      Authorization: `Token token=` + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: store.currentSpaceValue,
+          value: store.currentUserValue
+        },
+        over: store.gameOn
+      }
+    }
+  })
+}
+
 module.exports = {
   createGame,
-  getGames
+  getGames,
+  getOneGame,
+  updateGame
 }

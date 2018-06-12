@@ -4,48 +4,66 @@
 
 const store = require(`../../store`)
 
-// Organizational gap
-
-// Working
-const createGameSuccess = function () {
+// Create Game Success
+const createGameSuccess = function (response) {
+  store.game = response.game
   $(`#gameStatusEmptyDiv`).html(``)
-  const message = (`<p>A new game has been created in the API!</p>`)
+  const message = (`<p>Create Game success message!</p>`)
   $(`#gameStatusEmptyDiv`).append(message)
 }
-// Working
+// Create Game Error
 const createGameError = function (error) {
-  console.log(`Error in sign up is `, error)
+  console.log(`Error in Create Game is `, error)
   $(`#gameStatusEmptyDiv`).html(``)
-  const message = (`<p>ERROR: We were unable to create a new game at this time.</p>`)
+  const message = (`<p>ERROR: Create Game error message.</p>`)
   $(`#gameStatusEmptyDiv`).append(message)
 }
 
 // Organizational gap
 
-// Working
+// Get Gamessss Success
 const getGamesSuccess = function () {
   $(`#gameStatusEmptyDiv`).html(``)
-  const message = (`<p>A get game success message!</p>`)
+  const message = (`<p>Get Games success message!</p>`)
   $(`#gameStatusEmptyDiv`).append(message)
 }
-// Working
+// Get Gamessss Error
 const getGamesError = function (error) {
-  console.log(`Error in sign up is `, error)
+  console.log(`Error in Get Games is `, error)
   $(`#gameStatusEmptyDiv`).html(``)
-  const message = (`<p>ERROR: get game error message</p>`)
+  const message = (`<p>ERROR: Get Games error message.</p>`)
   $(`#gameStatusEmptyDiv`).append(message)
 }
 
 // Organizational gap
 
-// Working
+// Get One Game Success
 const getOneGameSuccess = function () {
-  console.log(`d`)
-  console.log(`ui store is `, store)
-  console.log(`ui token is `, store.user.token)
-
   $(`#gameStatusEmptyDiv`).html(``)
-  const message = (`<p>A get ONE game success message!</p>`)
+  const message = (`<p>Get Game success message!</p>`)
+  $(`#gameStatusEmptyDiv`).append(message)
+}
+// Get One Game Error
+const getOneGameError = function (error) {
+  console.log(`Error in Get One Game is `, error)
+  $(`#gameStatusEmptyDiv`).html(``)
+  const message = (`<p>ERROR: Get Game error message.</p>`)
+  $(`#gameStatusEmptyDiv`).append(message)
+}
+
+// Organizational gap
+
+// Update Game Success
+const updateGameSuccess = function () {
+  $(`#gameStatusEmptyDiv`).html(``)
+  const message = (`<p>Update Game success message!</p>`)
+  $(`#gameStatusEmptyDiv`).append(message)
+}
+// Update Game Error
+const updateGameError = function (error) {
+  console.log(`Error in Update Game is `, error)
+  $(`#gameStatusEmptyDiv`).html(``)
+  const message = (`<p>ERROR: Update Game error message</p>`)
   $(`#gameStatusEmptyDiv`).append(message)
 }
 
@@ -53,5 +71,9 @@ module.exports = {
   createGameSuccess,
   createGameError,
   getGamesSuccess,
-  getGamesError
+  getGamesError,
+  getOneGameSuccess,
+  getOneGameError,
+  updateGameSuccess,
+  updateGameError
 }
