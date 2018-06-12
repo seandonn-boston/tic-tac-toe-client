@@ -26,7 +26,6 @@ const signUpError = function (error) {
 const signInSuccess = function (response) {
   $(`#signInEmptyDiv`).html(``)
   store.user = response.user
-  console.log(`store is `, store)
   const message = (`<p>Welcome back!</p>`)
   $(`#signInEmptyDiv`).append(message)
   const gameBoardSection = document.getElementById(`gb-section`)

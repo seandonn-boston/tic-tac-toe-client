@@ -40,9 +40,6 @@ const getOneGame = function () {
 
 // Update Game
 const updateGame = function () {
-  console.log(`currentSpaceValue is`, store.currentSpaceValue)
-  console.log(`currentUserValue is`, store.currentUserValue)
-  console.log(`over is`, !store.gameOn)
   return $.ajax({
     method: `PATCH`,
     url: config.apiUrl + `/games/` + store.game.id,

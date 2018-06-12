@@ -24,12 +24,24 @@ const onPlay = function () {
 
   // Game API functions
   if (totalTurns === 0) {
+    $(`#createGameMsg`).html(``)
+    $(`#getGamesMsg`).html(``)
+    $(`#getThisGameMsg`).html(``)
+    $(`#updateGameMsg`).html(``)
     gameEvents.onCreateGame()
   } else if (winner === undefined) {
+    $(`#createGameMsg`).html(``)
+    $(`#getGamesMsg`).html(``)
+    $(`#getThisGameMsg`).html(``)
+    $(`#updateGameMsg`).html(``)
     gameEvents.onGetGames()
     gameEvents.onGetOneGame()
     gameEvents.onUpdateGame()
   } else if (winner !== undefined) {
+    $(`#createGameMsg`).html(``)
+    $(`#getGamesMsg`).html(``)
+    $(`#getThisGameMsg`).html(``)
+    $(`#updateGameMsg`).html(``)
     gameEvents.onUpdateGame()
   }
 
@@ -57,10 +69,10 @@ const onPlay = function () {
     // ADD THE store.currentUserValue TO currentGameArr[store.currentSpaceValue]
     currentGameArr[store.currentSpaceValue] = store.currentUserValue
 
-    // Nested totalTurn reevaluation
+    // Total Turn reevaluation
     totalTurns = totalTurns + 1
 
-    // Nested winner check
+    // Winner check
     if (totalTurns >= 5) {
       for (let i = 0; i < winningCombos.length; i++) {
         const currentCombo = winningCombos[i]
@@ -83,14 +95,14 @@ const onPlay = function () {
       }
     }
 
-    // Nested tie check (to be combined with winner check)
+    // Tie Check
     if (totalTurns === 9 && winner === undefined) {
       $(`#emptyMessage`).html(``)
       const tieMessage = (`<p>This game resulted in a tie!</p>`)
       $(`#emptyMessage`).append(tieMessage)
     }
 
-    // Nested turn rotation, so not to accidentally skip turns if
+    // Turn Rotation
     if (store.currentUserValue === `x`) {
       store.currentUserValue = `o`
       userOnDeck = `x`

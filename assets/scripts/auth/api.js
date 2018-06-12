@@ -25,8 +25,6 @@ const signIn = function (data) {
 
 // Change Password is operating properly
 const changePassword = function (data) {
-  console.log(`store is `, store)
-  console.log(`token is `, store.user.token)
   return $.ajax({
     method: `PATCH`,
     url: config.apiUrl + `/change-password`,
