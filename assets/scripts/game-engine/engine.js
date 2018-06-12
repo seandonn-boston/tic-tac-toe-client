@@ -121,6 +121,10 @@ const onReset = function () {
   store.currentUserValue = `x`
   totalTurns = 0
   store.gameOn = true
+  $(`#createGameMsg`).html(``)
+  $(`#getGamesMsg`).html(``)
+  $(`#getThisGameMsg`).html(``)
+  $(`#updateGameMsg`).html(``)
   $(`#moveSpace0`).html(``)
   $(`#moveSpace1`).html(``)
   $(`#moveSpace2`).html(``)
