@@ -62,8 +62,8 @@ const changePasswordSuccess = function () {
   $(`#changePasswordEmptyDiv`).html(``)
   $(`#signOutEmptyDiv`).html(``)
   const message = (`<p>You successfully changed your password.</p>`)
-  $(`#changePasswordForm`).append(message)
-  document.getElementById(`signInForm`).reset()
+  $(`#changePasswordEmptyDiv`).append(message)
+  document.getElementById(`changePasswordForm`).reset()
 }
 // Change Password error message is displaying properly
 const changePasswordError = function (error) {
