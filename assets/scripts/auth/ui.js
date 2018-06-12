@@ -9,7 +9,7 @@ const store = require(`../store`)
 // Sign Up success message is working but needs and html display still
 const signUpSuccess = function (response) {
   $(`#signUpEmptyDiv`).html(``)
-  const message = (`<p>Welcome new user and thank you for joining!</p>`)
+  const message = (`<p>Welcome new user and thank you for joining! Please sign in with your new credentials to continue to the game! (please)</p>`)
   $(`#signUpEmptyDiv`).append(message)
 }
 // Sign Up error message is working but needs and html display still
@@ -29,6 +29,8 @@ const signInSuccess = function (response) {
   console.log(`store is `, store)
   const message = (`<p>Welcome back!</p>`)
   $(`#signInEmptyDiv`).append(message)
+  const gameBoardSection = document.getElementById(`gb-section`)
+  gameBoardSection.classList.remove(`hidden`)
 }
 // Sign In error message is working but needs and html display still
 const signInError = function (error) {
@@ -61,6 +63,8 @@ const signOutSuccess = function () {
   $(`#signOutEmptyDiv`).html(``)
   const message = (`<p>You successfully signed out.</p>`)
   $(`#signOutEmptyDiv`).append(message)
+  const gameBoardSection = document.getElementById(`gb-section`)
+  gameBoardSection.classList.add(`hidden`)
   delete store.user
 }
 // Sign Out error message is working but needs and html display still

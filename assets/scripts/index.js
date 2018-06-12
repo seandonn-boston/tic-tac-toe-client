@@ -23,7 +23,7 @@ $(() => {
 // Game Engine listeners
 $(() => {
   // $(`#someIDofTheThing`).on(`action`, function (event) {event.preventDefault()})
-  $(`#gameReset`).on(`click`, gameEngine.onReset) // top left
+  $(`#gameReset`).on(`click`, gameEngine.onReset)
   $(`#box0`).on(`click`, gameEngine.onPlay) // top left
   $(`#box1`).on(`click`, gameEngine.onPlay) // top mid
   $(`#box2`).on(`click`, gameEngine.onPlay) // top right
