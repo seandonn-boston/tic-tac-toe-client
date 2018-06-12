@@ -5,6 +5,21 @@
 const gameApi = require(`./api`)
 const gameUi = require(`./ui`)
 
-module.exports = {
+// Working
+const onCreateGame = function (event) {
+  gameApi.createGame()
+    .then(gameUi.createGameSuccess)
+    .catch(gameUi.createGameError)
+}
 
+// Working
+const onGetGames = function (event) {
+  gameApi.getGames()
+    .then(gameUi.getGamesSuccess)
+    .catch(gameUi.getGamesError)
+}
+
+module.exports = {
+  onCreateGame,
+  onGetGames
 }

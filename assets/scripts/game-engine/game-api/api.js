@@ -5,6 +5,33 @@
 const config = require(`../../config`)
 const store = require(`../../store`)
 
-module.exports = {
+// Working
+const createGame = function () {
+  console.log(`api store is `, store)
+  console.log(`api token is `, store.user.token)
+  return $.ajax({
+    method: `POST`,
+    url: config.apiUrl + `/games`,
+    headers: {
+      Authorization: `Token token=` + store.user.token
+    }
+  })
+}
 
+// Working
+const getGames = function () {
+  console.log(`api store is `, store)
+  console.log(`api token is `, store.user.token)
+  return $.ajax({
+    method: `GET`,
+    url: config.apiUrl + `/games`,
+    headers: {
+      Authorization: `Token token=` + store.user.token
+    }
+  })
+}
+
+module.exports = {
+  createGame,
+  getGames
 }

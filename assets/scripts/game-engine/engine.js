@@ -1,4 +1,11 @@
 // HEY SEAN!!! Sean, you may edit this file. Don't edit files that don't have this comment at the top. Delete this comment before deliverables are due
+
+'use strict'
+
+// use require with a reference to bundle the file and use it in this file
+// const example = require('./example')
+const gameEvents = require(`./game-api/events`)
+
 const winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
 let arrEX = []
 let arrOH = []
@@ -10,6 +17,13 @@ let totalTurns = 0
 let gameOn = true
 
 const onPlay = function () {
+  // Working
+  // gameEvents.onCreateGame()
+  // // Working
+  // gameEvents.onGetGames()
+  console.log(`a`)
+  gameEvents.onGetOneGame()
+  console.log(`g`)
   // Get currentSpaceValue as a single number by retrieving the space ID and "boiling it down" to the unique number at the end of the ID
   const currentSpaceValue = Number(event.target.id.replace(`moveSpace`, ``))
 
