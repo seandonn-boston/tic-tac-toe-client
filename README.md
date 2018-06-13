@@ -26,7 +26,5 @@ My README
 
 ## Unsolved Problems
 This README still remains incomplete.
-Signup and Signin must only be available to not signed in users.
-Logout and Change password must only be available to signed in users.
 
 ## Next Steps and Nice-to-Have's
