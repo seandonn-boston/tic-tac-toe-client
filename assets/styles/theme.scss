@@ -13,8 +13,25 @@
   }
 }
 
-.gb-heading * {
-  float: left;
+.gb-heading {
+  & h2 {
+    color: $septenary-color;
+    float: left;
+  }
+
+  & .btn {
+    float: right;
+    margin: 15px;
+  }
+}
+
+.gb-responses {
+  color: $septenary-color;
+}
+
+.message {
+  color: $septenary-color;
+  font-size: 16px;
 }
 
 .left-box,
@@ -23,7 +40,10 @@
   float: left;
 
   & p {
+    color: $septenary-color;
+    font-size: 75px;
     height: 100px;
+    text-align: center;
   }
 }
 
