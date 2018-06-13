@@ -25,7 +25,7 @@ const createGameError = function (error) {
 const getGamesSuccess = function (getGamesResponse) {
   $(`#getGamesMsg`).html(``)
   const message = (`<p>Get Games success message!</p>
-  <p>According to Get Games, you've played ` + getGamesResponse.games.length + ` games</p>`)
+  <p>According to Get Games, this account is currently playing game #` + getGamesResponse.games.length + `.</p>`)
   $(`#getGamesMsg`).append(message)
 }
 // Get Gamessss Error
