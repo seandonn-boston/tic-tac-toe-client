@@ -39,8 +39,20 @@ const signInSuccess = function (response) {
   const message = (`<p>Welcome back!</p>`)
   $(`#signInEmptyDiv`).append(message)
   document.getElementById(`signInForm`).reset()
+
+  // Reveal Game Board
   const gameBoardSection = document.getElementById(`gb-section`)
   gameBoardSection.classList.remove(`hidden`)
+  // Reveal Change Pass and Sign Out
+  const changePassSection = document.getElementById(`changePassSection`)
+  changePassSection.classList.remove(`hidden`)
+  const signOutSection = document.getElementById(`signOutSection`)
+  signOutSection.classList.remove(`hidden`)
+  // Hide Sign In and Sign Up
+  const signUpSection = document.getElementById(`signUpSection`)
+  signUpSection.classList.add(`hidden`)
+  const signInSection = document.getElementById(`signInSection`)
+  signInSection.classList.add(`hidden`)
 }
 // Sign In error message is working but needs and html display still
 const signInError = function (error) {
@@ -86,8 +98,20 @@ const signOutSuccess = function () {
   $(`#signOutEmptyDiv`).html(``)
   const message = (`<p>You successfully signed out.</p>`)
   $(`#signOutEmptyDiv`).append(message)
+
+  // Hide Game Board
   const gameBoardSection = document.getElementById(`gb-section`)
   gameBoardSection.classList.add(`hidden`)
+  // Hide Change Pass and Sign Out
+  const changePassSection = document.getElementById(`changePassSection`)
+  changePassSection.classList.add(`hidden`)
+  const signOutSection = document.getElementById(`signOutSection`)
+  signOutSection.classList.add(`hidden`)
+  // Reveal Sign In and Sign Up
+  const signUpSection = document.getElementById(`signUpSection`)
+  signUpSection.classList.remove(`hidden`)
+  const signInSection = document.getElementById(`signInSection`)
+  signInSection.classList.remove(`hidden`)
   delete store.user
 }
 // Sign Out error message is working but needs and html display still
