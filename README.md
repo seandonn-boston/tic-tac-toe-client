@@ -33,7 +33,6 @@ Create a Tic Tac Toe game. The game must be a single page application, feature a
 - As feuding roommates, we want to compete so we can determine who will take out the trash.
 - As a Tic-Tac-Toe scout, I want to access the leaderboard so I can recruit them.
 
-
 ## Development Process
 - Wireframes
 - Basic HTML/SCSS game board
@@ -59,7 +58,12 @@ Create a Tic Tac Toe game. The game must be a single page application, feature a
 - This README needs some work - I rushed most of the content here just to make sure my thoughts were written down. Next is to turn each section into more of a story and less of a list, keeping technical terms consistent throughout and providing code snippets and console.log outputs when relevant
 - Refactor engine.js, try to make a bunch of smaller callback functions rather than a bunch of functions nested within an umbrella function.
 - Clean up theme.scss, order it, organize it, and turn reusable values into SASS variables
-
+- Github gives me the following vulnerability warning:
+```text
+  Potential security vulnerability found in the hoek dependency
+```
+cont: this warning appeared before I ever wrote any code (from the browser-template) and I did not ask about it yet. I will do further investigation by reviewing the closed issue cue and asking the teacher pointed questions.
+- I wrote some styles (https://github.com/SeanDonnellanWDI/tic-tac-toe-client/commit/aeafac79727797116cd98663a5ab9db5a4d3b689) That did not merge with master or have been overwritten. Try to get these back
 
 ## Next Steps and Nice-to-Have's
 - Style the entire SPA - revist wireframes
