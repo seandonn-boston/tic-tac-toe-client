@@ -64,6 +64,7 @@ Create a Tic Tac Toe game. The game must be a single page application, feature a
 ```
 cont: this warning appeared before I ever wrote any code (from the browser-template) and I did not ask about it yet. I will do further investigation by reviewing the closed issue cue and asking the teacher pointed questions.
 - I wrote some styles (https://github.com/SeanDonnellanWDI/tic-tac-toe-client/commit/aeafac79727797116cd98663a5ab9db5a4d3b689) That did not merge with master or have been overwritten. Try to get these back
+- Answer the question: Does sign up also count as login? If so, provide all sign in functionality (reveal/hide view states) on sign up AND store the token!
 
 ## Next Steps and Nice-to-Have's
 - Style the entire SPA - revist wireframes
