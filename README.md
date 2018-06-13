@@ -1,6 +1,6 @@
 [![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
-### Sean Donnellan Tic Tac Toe Game
+# Sean Donnellan Tic Tac Toe Game
 
 ## The Assignment
 Create a Tic Tac Toe game. The game must be a single page application, feature account creation and user authentication, and provide user-facing success and error messages for user authentication, game turns, and game-api calls.
@@ -23,10 +23,10 @@ Create a Tic Tac Toe game. The game must be a single page application, feature a
 - I completed the game scope study (https://git.generalassemb.ly/ga-wdi-boston/game-project/issues/1423)
 - After building the basic structure of my gameboard in HTML, Bootstrap, and a few SASS styles, I then detailed my game logic on a whiteboard first (I should have taken a picture of this, I was very happy with it), and then rewrote those notes into my notebook as a way to doublecheck my logic. This provided an easy-to-follow framework which I began building in my code as engine.js.
 
-## Wireframes
+### Wireframes
 - https://imgur.com/gallery/B4JQRsq
 
-# User Stories
+### User Stories
 - As a user, I want to play tic-tac-toe so I can have fun.
 - As two children, we want to play a game so we can determine who is the tic-tac-toe champion.
 - As a bored businessperson, I want to slack off at work so I can make the day go by faster.
