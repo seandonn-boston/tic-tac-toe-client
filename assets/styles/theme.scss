@@ -38,11 +38,13 @@
 .mid-box,
 .right-box {
   float: left;
+  padding: 0;
 
   & p {
     color: $septenary-color;
     font-size: 75px;
-    height: 100px;
+    height: 125px;
+    margin: 0;
     text-align: center;
   }
 }
