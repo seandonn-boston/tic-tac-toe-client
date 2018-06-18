@@ -17,6 +17,7 @@ Create a Tic Tac Toe game. The game must be a single page application, feature a
 - JavaScript
 - jQuery
 - AJAX
+- JSON
 - Issue Cue
 
 ## Prepwork
