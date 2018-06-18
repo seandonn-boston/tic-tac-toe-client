@@ -3,6 +3,7 @@
 'use strict'
 
 const store = require(`../store`)
+const gameEngine = require(`../game-engine/engine`)
 
 // Organizational gap
 
@@ -46,6 +47,7 @@ const signInSuccess = function (response) {
   document.getElementById(`signUpForm`).reset()
   document.getElementById(`signInForm`).reset()
   document.getElementById(`changePasswordForm`).reset()
+  gameEngine.onReset()
 
   // Reveal Game Board
   const gameBoardSection = document.getElementById(`gb-section`)
@@ -116,6 +118,7 @@ const signOutSuccess = function () {
   document.getElementById(`signUpForm`).reset()
   document.getElementById(`signInForm`).reset()
   document.getElementById(`changePasswordForm`).reset()
+  gameEngine.onReset()
 
   // Hide Game Board
   const gameBoardSection = document.getElementById(`gb-section`)
