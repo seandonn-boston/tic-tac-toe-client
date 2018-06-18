@@ -3,6 +3,7 @@
 'use strict'
 
 const store = require(`../store`)
+const gameEngine = require(`../game-engine/engine`)
 
 // Organizational gap
 
@@ -15,6 +16,8 @@ const signUpSuccess = function (response) {
   const message = (`<p>Welcome new user and thank you for joining! Please sign in with your new credentials to continue to the game! (please)</p>`)
   $(`#signUpEmptyDiv`).append(message)
   document.getElementById(`signUpForm`).reset()
+  document.getElementById(`signInForm`).reset()
+  document.getElementById(`changePasswordForm`).reset()
 }
 // Sign Up error message is working but needs and html display still
 const signUpError = function (error) {
@@ -25,6 +28,9 @@ const signUpError = function (error) {
   $(`#signOutEmptyDiv`).html(``)
   const message = (`<p>ERROR: We were unable to sign you up at this time. It is possible that your email has already been registered, please try again with a different email.</p>`)
   $(`#signUpEmptyDiv`).append(message)
+  document.getElementById(`signUpForm`).reset()
+  document.getElementById(`signInForm`).reset()
+  document.getElementById(`changePasswordForm`).reset()
 }
 
 // Organizational gap
@@ -38,7 +44,10 @@ const signInSuccess = function (response) {
   store.user = response.user
   const message = (`<p>Welcome back!</p>`)
   $(`#signInEmptyDiv`).append(message)
+  document.getElementById(`signUpForm`).reset()
   document.getElementById(`signInForm`).reset()
+  document.getElementById(`changePasswordForm`).reset()
+  gameEngine.onReset()
 
   // Reveal Game Board
   const gameBoardSection = document.getElementById(`gb-section`)
@@ -63,6 +72,9 @@ const signInError = function (error) {
   $(`#signOutEmptyDiv`).html(``)
   const message = (`<p>ERROR: We are unable to sign you in at this time. Please review your login credentials and try again.</p>`)
   $(`#signInEmptyDiv`).append(message)
+  document.getElementById(`signUpForm`).reset()
+  document.getElementById(`signInForm`).reset()
+  document.getElementById(`changePasswordForm`).reset()
 }
 
 // Organizational gap
@@ -75,6 +87,8 @@ const changePasswordSuccess = function () {
   $(`#signOutEmptyDiv`).html(``)
   const message = (`<p>You successfully changed your password.</p>`)
   $(`#changePasswordEmptyDiv`).append(message)
+  document.getElementById(`signUpForm`).reset()
+  document.getElementById(`signInForm`).reset()
   document.getElementById(`changePasswordForm`).reset()
 }
 // Change Password error message is displaying properly
@@ -86,6 +100,9 @@ const changePasswordError = function (error) {
   $(`#signOutEmptyDiv`).html(``)
   const message = (`<p>You were unable to change your password. Double check your inputs.</p>`)
   $(`#changePasswordEmptyDiv`).append(message)
+  document.getElementById(`signUpForm`).reset()
+  document.getElementById(`signInForm`).reset()
+  document.getElementById(`changePasswordForm`).reset()
 }
 
 // Organizational gap
@@ -98,6 +115,10 @@ const signOutSuccess = function () {
   $(`#signOutEmptyDiv`).html(``)
   const message = (`<p>You successfully signed out.</p>`)
   $(`#signOutEmptyDiv`).append(message)
+  document.getElementById(`signUpForm`).reset()
+  document.getElementById(`signInForm`).reset()
+  document.getElementById(`changePasswordForm`).reset()
+  gameEngine.onReset()
 
   // Hide Game Board
   const gameBoardSection = document.getElementById(`gb-section`)
@@ -123,6 +144,9 @@ const signOutError = function (error) {
   $(`#signOutEmptyDiv`).html(``)
   const message = (`<p>You successfully signed out.</p>`)
   $(`#signOutEmptyDiv`).append(message)
+  document.getElementById(`signUpForm`).reset()
+  document.getElementById(`signInForm`).reset()
+  document.getElementById(`changePasswordForm`).reset()
 }
 
 // Organizational gap
