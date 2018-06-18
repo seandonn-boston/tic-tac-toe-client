@@ -1,0 +1,140 @@
+<!-- HEY SEAN!!! Sean, you may edit this file. Don't edit files that don't have this comment at the top. Delete this comment before deliverables are due -->
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Sean's Tic Tac Toe Game</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+
+    <body class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1>Sean's Wicked Wacky Laffy Taffy Tacky Tics vs. Toes</h1>
+          <h4>Extra Extreme Edition</h4>
+        </div>
+      </div>
+      <hr>
+
+      <div class="row gb-section hidden" id="gb-section">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 gb-col">
+          <div class="gb-heading clearfix">
+            <h2>Game Board</h2>
+            <button id="gameReset" type="button" name="button">New Game</button>
+          </div>
+          <div class="gb-wrapper">
+            <div class="row top-row clearfix">
+              <div class="col-xs-4 left-box" id="box0" data-cell-index="0"><p id="moveSpace0"></p></div>
+              <div class="col-xs-4 mid-box" id="box1" data-cell-index="1"><p id="moveSpace1"></p></div>
+              <div class="col-xs-4 right-box" id="box2" data-cell-index="2"><p id="moveSpace2"></p></div>
+            </div>
+            <div class="row middle-row clearfix">
+              <div class="col-xs-4 left-box" id="box3" data-cell-index="3"><p id="moveSpace3"></p></div>
+              <div class="col-xs-4 mid-box" id="box4" data-cell-index="4"><p id="moveSpace4"></p></div>
+              <div class="col-xs-4 right-box" id="box5" data-cell-index="5"><p id="moveSpace5"></p></div>
+            </div>
+            <div class="row bottom-row clearfix">
+              <div class="col-xs-4 left-box" id="box6" data-cell-index="6"><p id="moveSpace6"></p></div>
+              <div class="col-xs-4 mid-box" id="box7" data-cell-index="7"><p id="moveSpace7"></p></div>
+              <div class="col-xs-4 right-box" id="box8" data-cell-index="8"><p id="moveSpace8"></p></div>
+            </div>
+          </div>
+          <div id="emptyMessage"></div>
+        </div>
+        <div class="gb-responses">
+          <div class="col-xs-12 col-sm-10 col-sm-offset-1 gb-col">
+            <h2>Game API Messages</h2>
+            <div id="createGameMsg"></div>
+            <div id="getGamesMsg"></div>
+            <div id="getThisGameMsg"></div>
+            <div id="updateGameMsg"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Big row of User API forms *** ALL OF THESE WORK 2018.06.08@10:30am -->
+      <div class="row user-auth">
+        <div class="col-xs-12">
+          <h2>User Authentication Forms</h2>
+        </div>
+
+        <!-- Sign up -->
+        <div class="col-xs-12 col-sm-6 col-md-3" id="signUpSection">
+          <!-- depending on display functionality, all user-auth forms might be in this div.col or they might require their own col. Keep an eye on this during visibility testing, but for now they will be seperated out into multiple div.col -->
+          <h3>Sign Up</h3>
+          <form id="signUpForm">
+            <div class="form-group">
+              <!-- Sign Up Email Input -->
+              <label for="signUpEmailInput">Email address</label>
+              <input type="email" class="form-control" id="signUpEmailInput" name="credentials[email]" placeholder="Email">
+              <!-- Sign Up Password Input -->
+              <label for="signUpPassword">Password</label>
+              <input type="password" class="form-control" id="signUpPassword" name="credentials[password]" placeholder="Password">
+              <!-- Sign Up Confirm Password Input -->
+              <label for="signUpPasswordConfirm">Confirm Password</label>
+              <input type="password" class="form-control" id="signUpPasswordConfirm" name="credentials[password_confirmation]" placeholder="Confirm Password">
+              <!-- Sign Up Submit -->
+              <button type="submit">Sign Up</button>
+            </div>
+          </form>
+          <div class="col-xs-12" id="signUpEmptyDiv"></div>
+        </div>
+        <hr>
+
+        <!-- Sign In -->
+        <div class="col-xs-12 col-sm-6 col-md-3" id="signInSection">
+          <h3>Sign In</h3>
+          <form id="signInForm">
+            <div class="form-group">
+              <!-- Sign In Email Input -->
+              <label for="signInEmailInput">Email address</label>
+              <input type="email" class="form-control" id="signInEmailInput" name="credentials[email]" placeholder="Email">
+              <!-- Sign In Password Input -->
+              <label for="signInPassword">Password</label>
+              <input type="password" class="form-control" id="signInPassword" name="credentials[password]" placeholder="Password">
+              <!-- Sign In Submit -->
+              <button type="submit">Sign In</button>
+            </div>
+          </form>
+          <div class="col-xs-12" id="signInEmptyDiv"></div>
+        </div>
+        <hr>
+
+        <!-- Change Password -->
+        <div class="col-xs-12 col-sm-6 col-md-3 hidden" id="changePassSection">
+          <h3>Change Password</h3>
+          <form id="changePasswordForm">
+            <div class="form-group">
+              <!-- Change Password Old Input -->
+              <label for="changePasswordOld">Old Password</label>
+              <input type="password" class="form-control" id="changePasswordOld" name="passwords[old]" placeholder="Old Password">
+              <!-- Change Password New Input -->
+              <label for="changePasswordNew">New Password</label>
+              <input type="password" class="form-control" id="changePasswordNew" name="passwords[new]" placeholder="New Password">
+              <!-- Change Password Submit -->
+              <button type="submit">Change Password</button>
+            </div>
+          </form>
+          <div class="col-xs-12" id="changePasswordEmptyDiv"></div>
+        </div>
+        <hr>
+
+        <!-- Sign Out -->
+        <div class="col-xs-12 col-sm-6 col-md-3 hidden" id="signOutSection">
+          <h3>Sign Out</h3>
+          <form id="signOutForm">
+            <div class="form-group">
+              <button id="signOutBtn" type="submit">Sign Out</button>
+            </div>
+          </form>
+          <div class="col-xs-12" id="signOutEmptyDiv"></div>
+        </div>
+      </div>
+    </body>
+</html>
