@@ -74,6 +74,6 @@ cont: this warning appeared before I ever wrote any code (from the browser-templ
 - Add the following to theme.scss:
 ```css
 * {
-  background-image: image-of-kanye-wests-face.jpg;
+  background-image: image-of-kanye-west.jpg;
 }
 ```
