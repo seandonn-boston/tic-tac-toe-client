@@ -22,7 +22,7 @@ Create a Tic Tac Toe game. The game must be a single page application, feature a
 
 ## Prepwork
 - I completed the game scope study (https://git.generalassemb.ly/ga-wdi-boston/game-project/issues/1423)
-- After building the basic structure of my gameboard in HTML, Bootstrap, and a few SASS styles, I then detailed my game logic on a whiteboard first (I should have taken a picture of this, I was very happy with it), and then rewrote those notes into my notebook as a way to doublecheck my logic. This provided an easy-to-follow framework which I began building in my code as engine.js.
+- After building the basic structure of my gameboard in HTML, Bootstrap, and a few SASS styles, I then detailed my game logic on a whiteboard first and transferred those notes into my notebook as a way to doublecheck my logic. This provided an easy-to-follow framework which I began building in my code as engine.js.
 
 ### Wireframes
 - https://imgur.com/gallery/B4JQRsq
@@ -32,7 +32,7 @@ Create a Tic Tac Toe game. The game must be a single page application, feature a
 - As two children, we want to play a game so we can determine who is the tic-tac-toe champion.
 - As a bored businessperson, I want to slack off at work so I can make the day go by faster.
 - As feuding roommates, we want to compete so we can determine who will take out the trash.
-- As a Tic-Tac-Toe scout, I want to access the leaderboard so I can recruit them.
+- As a Tic-Tac-Toe scout, I want to access the leaderboard so I can recruit champions.
 
 ## Development Process
 - Wireframes
@@ -71,9 +71,3 @@ cont: this warning appeared before I ever wrote any code (from the browser-templ
 - Style the entire SPA - revist wireframes
 - Add all user authentication forms into dropdown forms in a top-navbar
 - Create a scoreboard
-- Add the following to theme.scss:
-```css
-* {
-  background-image: image-of-kanye-west.jpg;
-}
-```
